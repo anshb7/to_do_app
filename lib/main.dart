@@ -46,6 +46,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String dropdownvalue = 'Work';
+  var items = ['Work', 'Home', 'Goal', 'Task'];
   bool ischecked = false;
   bool checked = false;
   List<Task> tasks = [Task("Task"), Task("T"), Task("Task")];
@@ -76,7 +78,7 @@ New Task''',
                                   style: TextStyle(
                                     decoration: TextDecoration.none,
                                     fontFamily: "product",
-                                    fontSize: 40.0,
+                                    fontSize: 60.0,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
@@ -101,7 +103,7 @@ New Task''',
                                   ),
                                   labelText: 'Task Name',
                                   labelStyle: TextStyle(
-                                      fontSize: 25,
+                                      fontSize: 30,
                                       fontFamily: "product",
                                       color: Colors.grey),
                                   contentPadding: EdgeInsets.only(
@@ -113,46 +115,61 @@ New Task''',
                                 height: 20,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                                    child: const Icon(
+                                    child: Icon(
                                       Icons.calendar_today,
                                       color: Colors.yellow,
                                     ),
                                   ),
-                                  SizedBox(width: 30,),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
                                   Text(
                                     DateFormat.MMMMEEEEd().format(date),
                                     style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20),
+                                        fontSize: 25),
                                   ),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
-                                  Padding(
-                                      padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                                    child: const Icon(
+                                  const Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                    child: Icon(
                                       Icons.timer,
                                       color: Colors.orange,
                                     ),
-                                  ),SizedBox(width: 30,),
-                                  Text(
-                                    DateFormat("hh:mm:ss a").format(DateTime.now()),
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,fontSize: 20),
                                   ),
+                                  const SizedBox(
+                                    width: 30,
+                                  ),
+                                  Text(
+                                    DateFormat("hh:mm:ss a")
+                                        .format(DateTime.now()),
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 25,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  
                                 ],
                               )
                             ],
