@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/task.dart';
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          colorScheme: ColorScheme(
+          colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: Colors.purpleAccent,
         secondary: Colors.black12,
@@ -56,22 +58,115 @@ class _MyHomePageState extends State<MyHomePage> {
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           height: 70,
           width: 200,
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: FloatingActionButton(
               onPressed: () {
                 showCupertinoModalBottomSheet(
-                  context: context,
-                  builder: (context) => Container(),
-                );
+                    context: context,
+                    builder: (context) => Material(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              const Padding(
+                                padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                child: Text(
+                                  '''Create 
+New Task''',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    fontFamily: "product",
+                                    fontSize: 40.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const TextField(
+                                decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      style: BorderStyle.none,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      style: BorderStyle.none,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  labelText: 'Task Name',
+                                  labelStyle: TextStyle(
+                                      fontSize: 25,
+                                      fontFamily: "product",
+                                      color: Colors.grey),
+                                  contentPadding: EdgeInsets.only(
+                                    left: 20,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                    child: const Icon(
+                                      Icons.calendar_today,
+                                      color: Colors.yellow,
+                                    ),
+                                  ),
+                                  SizedBox(width: 30,),
+                                  Text(
+                                    DateFormat.MMMMEEEEd().format(date),
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                      padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                    child: const Icon(
+                                      Icons.timer,
+                                      color: Colors.orange,
+                                    ),
+                                  ),SizedBox(width: 30,),
+                                  Text(
+                                    DateFormat("hh:mm:ss a").format(DateTime.now()),
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,fontSize: 20),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ));
               },
               elevation: 25,
-              backgroundColor: Color.fromRGBO(153, 101, 222, 10),
-              shape: RoundedRectangleBorder(
+              backgroundColor: const Color.fromRGBO(153, 101, 222, 10),
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child:
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
+                const Padding(
+                  padding: EdgeInsets.all(5.0),
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
@@ -84,14 +179,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Container(
-            color: Color.fromRGBO(254, 254, 254, 1),
+            color: const Color.fromRGBO(254, 254, 254, 1),
             width: double.infinity,
             height: 150,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -109,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     alignment: Alignment.bottomCenter,
                     child: Text(
                       DateFormat('dd-MM-yyyy').format(date),
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 20,
                           fontFamily: "Product",
                           color: Colors.black),
@@ -126,16 +221,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     return Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CheckboxListTile(
-                        checkboxShape: RoundedRectangleBorder(
+                        checkboxShape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         selected: checked,
-                        selectedTileColor: Color.fromRGBO(153, 101, 222, 10),
+                        selectedTileColor:
+                            const Color.fromRGBO(153, 101, 222, 10),
                         title: Text(
                           tasks[index].task,
-                          style: TextStyle(fontFamily: "Product", fontSize: 25),
+                          style: const TextStyle(
+                              fontFamily: "Product", fontSize: 25),
                         ),
                         controlAffinity: ListTileControlAffinity.trailing,
                         value: ischecked,
@@ -146,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         },
                         activeColor: Colors.white,
-                        checkColor: Color.fromRGBO(153, 101, 222, 10),
+                        checkColor: const Color.fromRGBO(153, 101, 222, 10),
                       ),
                     );
                   }))
