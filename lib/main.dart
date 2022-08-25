@@ -46,6 +46,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool isSwitched = false;
   String dropdownvalue = 'Work';
   var items = ['Work', 'Home', 'Goal', 'Task'];
   bool ischecked = false;
@@ -206,7 +207,59 @@ New Task''',
                               SizedBox(
                                 height: 30,
                               ),
-                              
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                    child: SizedBox(
+                                      width: 250,
+                                      height: 60,
+                                      child: ElevatedButton.icon(
+                                        icon: Icon(
+                                          Icons.notification_add,
+                                          color: Colors.blue[100],
+                                          size: 20,
+                                        ),
+                                        label: Text(
+                                          'Remind Me',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.white),
+                                          shape: MaterialStateProperty.all(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5))),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Transform.scale(
+                                    scale: 1.5,
+                                    child: Switch(
+                                      value: isSwitched,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          isSwitched = value;
+                                          print(isSwitched);
+                                        });
+                                      },
+                                      activeTrackColor:
+                                          Color.fromARGB(255, 181, 206, 235),
+                                      activeColor:
+                                          Color.fromARGB(255, 181, 206, 235),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ));
