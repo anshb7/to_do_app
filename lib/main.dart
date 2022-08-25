@@ -85,7 +85,7 @@ New Task''',
                                 ),
                               ),
                               const SizedBox(
-                                height: 10,
+                                height: 20,
                               ),
                               const TextField(
                                 decoration: InputDecoration(
@@ -112,13 +112,13 @@ New Task''',
                                 ),
                               ),
                               const SizedBox(
-                                height: 20,
+                                height: 25,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   const Padding(
-                                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                    padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
                                     child: Icon(
                                       Icons.calendar_today,
                                       color: Colors.yellow,
@@ -143,7 +143,7 @@ New Task''',
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   const Padding(
-                                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                                    padding: EdgeInsets.fromLTRB(30, 10, 0, 0),
                                     child: Icon(
                                       Icons.timer,
                                       color: Colors.orange,
@@ -164,14 +164,49 @@ New Task''',
                                 ],
                               ),
                               const SizedBox(
-                                height: 30,
+                                height: 40,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                    child: SizedBox(
+                                      width: 350,
+                                      height: 60,
+                                      child: ElevatedButton.icon(
+                                        icon: Icon(
+                                          Icons.work,
+                                          color: Colors.purple,
+                                          size: 20,
+                                        ),
+                                        label: Text(
+                                          'Work',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Colors.white),
+                                          shape: MaterialStateProperty.all(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5))),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ],
-                              )
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              
                             ],
                           ),
                         ));
