@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/task.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 200,
           padding: EdgeInsets.all(5),
           child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                showCupertinoModalBottomSheet(
+                  context: context,
+                  builder: (context) => Container(),
+                );
+              },
               elevation: 25,
               backgroundColor: Color.fromRGBO(153, 101, 222, 10),
               shape: RoundedRectangleBorder(
