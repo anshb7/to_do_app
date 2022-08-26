@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/task.dart';
 
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
         onSecondary: Colors.white,
         error: Colors.red,
         onError: Colors.white,
-        background: Color.fromRGBO(254, 254, 254, 1),
-        onBackground: Colors.white,
+        background: Colors.black,
+        onBackground: Colors.black,
         surface: Colors.purpleAccent,
         onSurface: Colors.white,
       )),
@@ -45,7 +46,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool ischecked = false;
   bool checked = false;
-  List<Task> tasks = [Task("Task"), Task("T"), Task("Task")];
+  List<Task> tasks = [];
   @override
   Widget build(BuildContext context) {
     DateTime date = DateTime.now();
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Container(
-            color: Color.fromRGBO(254, 254, 254, 1),
+            color: Colors.transparent,
             width: double.infinity,
             height: 150,
             child: Row(
@@ -125,18 +126,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        selected: checked,
+                        selected: tasks[index].value,
                         selectedTileColor: Color.fromRGBO(153, 101, 222, 10),
                         title: Text(
                           tasks[index].task,
                           style: TextStyle(fontFamily: "Product", fontSize: 25),
                         ),
                         controlAffinity: ListTileControlAffinity.trailing,
-                        value: ischecked,
+                        value: tasks[index].value,
                         onChanged: (value) {
                           setState(() {
-                            ischecked = value!;
-                            checked = true;
+                            tasks[index].value = value!;
                           });
                         },
                         activeColor: Colors.white,

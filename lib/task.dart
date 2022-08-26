@@ -1,4 +1,5 @@
 class Task {
   final String task;
-  Task(this.task);
+  bool value;
+  Task({ required this.task, this.value = false});
 }
