@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -55,6 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
   bool ischecked = false;
   bool checked = false;
   List<Task> tasks = [];
+  List<Color> colors = [
+    Color.fromRGBO(234, 154, 55, 1),
+    Color.fromRGBO(164, 34, 238, 1),
+    Color.fromRGBO(49, 114, 238, 1),
+    Color.fromRGBO(226, 171, 73, 1),
+    Color.fromRGBO(89, 192, 177, 1),
+    Color.fromRGBO(229, 103, 90, 1)
+  ];
   @override
   Widget build(BuildContext context) {
     DateTime date = DateTime.now();
@@ -274,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         selected: tasks[index].value,
-                        selectedTileColor: Color.fromRGBO(153, 101, 222, 10),
+                        selectedTileColor: addcolor(),
                         title: Text(
                           tasks[index].task,
                           style: const TextStyle(
@@ -300,5 +309,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void addtask() {
     tasks.add(Task(task: taskcontroller.text));
     setState(() {});
+  }
+
+  Color addcolor() {
+    var value;
+    for (var i = 0; i < tasks.length; i++) {
+      value = Random().nextInt(6);
+    }
+    return colors[value];
   }
 }
