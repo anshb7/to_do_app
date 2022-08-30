@@ -3,6 +3,7 @@
 import 'dart:ffi';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
@@ -80,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     builder: (context) => Material(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               const Padding(
@@ -90,14 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   style: TextStyle(
                                     decoration: TextDecoration.none,
                                     fontFamily: "product",
-                                    fontSize: 60.0,
+                                    fontSize: 30.0,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),
                                 ),
                               ),
                               const SizedBox(
-                                height: 30,
+                                height: 15,
                               ),
                               TextField(
                                 controller: taskcontroller,
@@ -145,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 25),
+                                        fontSize: 15),
                                   ),
                                 ],
                               ),
@@ -171,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 25,
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ],
@@ -180,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                                    padding: EdgeInsets.all(20),
                                     child: SizedBox(
                                       width: 350,
                                       height: 60,
@@ -233,6 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ]))),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             color: Colors.transparent,
@@ -242,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -255,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Text(
@@ -269,6 +272,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+          ),
+          Center(
+            child: centertext(),
+            heightFactor: 0,
           ),
           Expanded(
               child: ListView.builder(
@@ -317,5 +324,21 @@ class _MyHomePageState extends State<MyHomePage> {
       value = Random().nextInt(6);
     }
     return colors[value];
+  }
+
+  Text centertext() {
+    var message;
+    if (tasks.isEmpty == true) {
+      message = "There is nothing here,tap the button below to add!";
+    } else {
+      message = "";
+    }
+    return Text(
+      message,
+      style: TextStyle(
+          color: Colors.grey,
+          fontFamily: "Product",
+          fontWeight: FontWeight.bold),
+    );
   }
 }
