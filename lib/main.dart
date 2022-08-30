@@ -179,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.all(20),
@@ -274,7 +274,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Center(
-            child: centertext(),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: centertext(),
+            ),
             heightFactor: 0,
           ),
           Expanded(
@@ -329,7 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Text centertext() {
     var message;
     if (tasks.isEmpty == true) {
-      message = "There is nothing here,tap the button below to add!";
+      message = """There is nothing here,tap the button below to add!""";
     } else {
       message = "";
     }
