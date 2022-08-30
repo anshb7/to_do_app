@@ -57,14 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool ischecked = false;
   bool checked = false;
   List<Task> tasks = [];
-  List<Color> colors = [
-    Color.fromRGBO(234, 154, 55, 1),
-    Color.fromRGBO(164, 34, 238, 1),
-    Color.fromRGBO(49, 114, 238, 1),
-    Color.fromRGBO(226, 171, 73, 1),
-    Color.fromRGBO(89, 192, 177, 1),
-    Color.fromRGBO(229, 103, 90, 1)
-  ];
+
   @override
   Widget build(BuildContext context) {
     DateTime date = DateTime.now();
@@ -127,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                               const SizedBox(
-                                height: 25,
+                                height: 20,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -182,9 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.all(20),
+                                    padding: EdgeInsets.all(5),
                                     child: SizedBox(
-                                      width: 350,
+                                      width: 280,
                                       height: 60,
                                       child: ElevatedButton(
                                         child: Text(
@@ -293,7 +286,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         selected: tasks[index].value,
-                        selectedTileColor: addcolor(),
+                        selectedTileColor: Color.fromRGBO(229, 103, 90, 1),
                         title: Text(
                           tasks[index].task,
                           style: const TextStyle(
@@ -319,14 +312,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void addtask() {
     tasks.add(Task(task: taskcontroller.text));
     setState(() {});
-  }
-
-  Color addcolor() {
-    var value;
-    for (var i = 0; i < tasks.length; i++) {
-      value = Random().nextInt(6);
-    }
-    return colors[value];
   }
 
   Text centertext() {
